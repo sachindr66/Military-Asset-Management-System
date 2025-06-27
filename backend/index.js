@@ -22,9 +22,9 @@ const connectDB = async () => {
 connectDB();
 
 app.get('/', (req, res) => {
-    res.send('✅ Server is running and MongoDB is connected!');
+    res.send('✅ index is running and MongoDB is connected!');
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`🚀 index running on http://localhost:${PORT}`);
 });
