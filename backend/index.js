@@ -22,7 +22,8 @@ app.use(logRequest)
 
 app.use(express.json())
 app.use(cors({
-    origin:'http://localhost:5173'
+    // origin:'http://localhost:5173'
+    origin:'https://military-asset-management-system-lyhqnxc5y-sachin-d-rs-projects.vercel.app/'
 }))
 
 // Routes/
