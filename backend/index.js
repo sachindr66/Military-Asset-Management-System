@@ -1,12 +1,45 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from 'cors'
 
-// Load environment variables
 dotenv.config();
 
-// Initialize express app
+import assetRoutes from './routes/assetRoute.js'
+import purchaseRoutes from './routes/purchaseRoutes.js'
+import transferRoutes from './routes/transferRoutes.js'
+import assignmentRoutes from './routes/assignmentRoutes.js'
+import authRouts from './routes/authRouts.js'
+import dashboardRoutes from './routes/dashboardRoutes.js'
+import personnelRoutes from './routes/personnelRoutes.js'
+import { logRequest, logError } from './utils/logger.js';
+
+
 const app = express();
+
+app.use(logRequest)
+
+app.use(express.json())
+app.use(cors({
+    origin:'http://localhost:5173'
+}))
+
+// Routes/
+
+app.use('/api/assets', assetRoutes)
+app.use('/api/purchases', purchaseRoutes)
+// app.use('/api/transfers', transferRoutes)
+app.use('/api/transfers', (req, res, next) => {
+  console.log('🔥 Transfer route hit');
+  next();
+}, transferRoutes);
+app.use('/api/assignments', assignmentRoutes)
+app.use('/api/auth', authRouts)
+app.use('/api/dashboard', dashboardRoutes)
+app.use('/api/personnel', personnelRoutes)
+
+app.use(logError)
+
 const PORT = process.env.PORT || 5000;
 
 const connectDB = async () => {
