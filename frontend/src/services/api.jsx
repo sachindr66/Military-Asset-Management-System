@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api', // Replace with your backend URL
+  // baseURL: 'http://localhost:5000/api', // Replace with your backend URL
+  baseUrl:"https://military-asset-management-system-ba.vercel.app/",
   headers: {
     'Content-Type': 'application/json',
   },
