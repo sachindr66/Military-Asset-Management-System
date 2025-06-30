@@ -102,3 +102,27 @@ export const getPersonnel = async () => {
   const response = await API.get('/personnel');
   return response.data;
 };
+
+
+
+// ✅ Fetch all transfers
+export const fetchTransfers = async () => {
+  try {
+    const response = await API.get('/transfers');
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching transfers:", error);
+    throw error;
+  }
+};
+
+// ✅ Fetch all bases
+export const fetchBases = async () => {
+  try {
+    const response = await API.get('/bases');
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching bases:", error);
+    throw error;
+  }
+};

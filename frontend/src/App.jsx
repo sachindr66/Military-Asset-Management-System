@@ -1,28 +1,57 @@
-import React from 'react'
-
-import  { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
-import Header from './components/Header'
-import DashboardPage from './pages/DashboardPage'
-import PurchasePage from './pages/PurchasePage'
-import TransferPage from './pages/TransferPage'
-import AssignmentPage from './pages/AssignmentPage'
-import Login from './components/Login'
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import DashboardPage from './pages/DashboardPage';
+import PurchasePage from './pages/PurchasePage';
+import TransferPage from './pages/TransferPage';
+import AssignmentPage from './pages/AssignmentPage';
+import Login from './components/Login';
+import UnauthorizedPage from './pages/UnauthorizedPage';
+import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
   return (
-    <div>
-      <BrowserRouter>
-      <Header/>
+    <BrowserRouter>
+      <Header />
       <Routes>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/' element={<DashboardPage/>}/>
-      <Route path='/purchases' element={<PurchasePage/>}/>
-      <Route path='/transfers' element={<TransferPage/>}/>
-      <Route path='/assignments' element={<AssignmentPage/>}/>
-      </Routes>
-      </BrowserRouter>
-    </div>
-  )
-}
+        <Route path="/login" element={<Login />} />
+        <Route path="/unauthorized" element={<UnauthorizedPage />} />
 
-export default App
+        <Route
+          path="/Dashboard"
+          element={
+            <PrivateRoute allowedRoles={['Admin', 'Base Commander', 'Logistics Officer']}>
+              <DashboardPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/purchases"
+          element={
+            <PrivateRoute allowedRoles={['Admin', 'Logistics Officer']}>
+              <PurchasePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/transfers"
+          element={
+            <PrivateRoute allowedRoles={['Admin', 'Logistics Officer']}>
+              <TransferPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/assignments"
+          element={
+            <PrivateRoute allowedRoles={['Admin', 'Base Commander']}>
+              <AssignmentPage />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;

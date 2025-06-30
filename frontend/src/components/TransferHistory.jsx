@@ -6,8 +6,8 @@ const TransferHistory = () => {
   const [transfers, setTransfers] = useState([]);
 
   useEffect(() => {
-    fetchTransfers().then((response) => {
-      setTransfers(response.data);  // Assuming the response contains transfer data
+    fetchTransfers().then((data) => {
+      setTransfers(data);  // Assuming the response contains transfer data
     });
   }, []);
 
@@ -26,10 +26,10 @@ const TransferHistory = () => {
         <TableBody>
           {transfers.map((transfer) => (
             <TableRow key={transfer._id}>
-              <TableCell>{transfer.asset_name}</TableCell>
+              <TableCell>{transfer.asset_id?.name}</TableCell>
               <TableCell>{transfer.quantity}</TableCell>
-              <TableCell>{transfer.from_base}</TableCell>
-              <TableCell>{transfer.to_base}</TableCell>
+              <TableCell>{transfer.from_base_id?.name}</TableCell>
+              <TableCell>{transfer.to_base_id?.name}</TableCell>
               <TableCell>{new Date(transfer.date).toLocaleDateString()}</TableCell>
             </TableRow>
           ))}
