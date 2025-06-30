@@ -1,9 +1,13 @@
 import mongoose from 'mongoose';
 
-const baseSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  location: String
+const transferSchema = new mongoose.Schema({
+  asset_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Asset' },
+  from_base_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Base' },
+  to_base_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Base' },
+  quantity: Number,
+  date: Date,
 });
 
-const Base = mongoose.model('Base', baseSchema);
-export default Base;
+// ✅ Avoid OverwriteModelError
+const Transfer = mongoose.models.Transfer || mongoose.model('Transfer', transferSchema);
+export default Transfer;

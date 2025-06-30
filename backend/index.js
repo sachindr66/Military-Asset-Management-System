@@ -12,6 +12,7 @@ import assignmentRoutes from './routes/assignmentRoutes.js'
 import authRouts from './routes/authRouts.js'
 import dashboardRoutes from './routes/dashboardRoutes.js'
 import personnelRoutes from './routes/personnelRoutes.js'
+import baseRoutes from './routes/baseRoutes.js'
 import { logRequest, logError } from './utils/logger.js';
 
 
@@ -37,6 +38,7 @@ app.use('/api/assignments', assignmentRoutes)
 app.use('/api/auth', authRouts)
 app.use('/api/dashboard', dashboardRoutes)
 app.use('/api/personnel', personnelRoutes)
+app.use('/api/bases', baseRoutes)
 
 app.use(logError)
 

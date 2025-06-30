@@ -1,5 +1,6 @@
 import Transfer from '../models/Transfer.js';
 import Asset from '../models/Asset.js';
+import Base from '../models/Base.js';
 
 export const createTransfer = async (req, res) => {
   const { asset_id, from_base_id, to_base_id, quantity, date } = req.body;
@@ -7,7 +8,7 @@ export const createTransfer = async (req, res) => {
   try {
     console.log('🔥 Transfer request body:', req.body);
 
-    const asset = await Asset.findById({_id:asset_id, base_id:from_base_id});
+    const asset = await Asset.findOne({_id:asset_id, base_id:from_base_id});
     if (!asset) {
       return res.status(404).json({ message: 'Asset not found.' });
     }
@@ -56,13 +57,18 @@ export const createTransfer = async (req, res) => {
   }
 };
 
-// Get all transfer history
+
 export const getTransfers = async (req, res) => {
   try {
-    const transfers = await Transfer.find().populate('asset_id', 'name type');
-    res.json(transfers);
+    const transfers = await Transfer.find()
+      .populate('asset_id', 'name')
+      .populate('from_base_id', 'name')
+      .populate('to_base_id', 'name');
+
+    res.status(200).json(transfers);
   } catch (err) {
-    console.error('❌ Fetch transfers error:', err);
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: 'Error fetching transfers', error: err });
   }
 };
+
+

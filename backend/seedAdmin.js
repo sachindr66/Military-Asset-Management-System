@@ -5,32 +5,53 @@ import Base from './models/Base.js';
 
 dotenv.config();
 
-const createAdmin = async () => {
+const createUsers = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('✅ Connected to MongoDB');
 
-    // Create a base if not already present
-    const base = new Base({ name: 'Headquarters', location: 'Central Command' });
+    // Create a base for Base Commander and Logistics Officer
+    const base = new Base({ name: 'Bravo Base', location: 'Eastern Zone' });
     await base.save();
     console.log('✅ Base created:', base);
 
-    // ❌ Don't hash manually — your User model does it
+    // Create Admin
     const adminUser = new User({
       username: 'adminuser',
-      password: 'admin123', // plain text; will be hashed by the model
+      password: 'admin123',
       role: 'Admin',
       base_id: base._id,
     });
 
+    // Create Base Commander
+    const commanderUser = new User({
+      username: 'commander',
+      password: 'commander123',
+      role: 'Base Commander',
+      base_id: base._id,
+    });
+
+    // Create Logistics Officer
+    const logisticsUser = new User({
+      username: 'logistics',
+      password: 'logistics123',
+      role: 'Logistics Officer',
+      base_id: base._id,
+    });
+
     await adminUser.save();
-    console.log('✅ Admin user created:', adminUser);
+    await commanderUser.save();
+    await logisticsUser.save();
+
+    console.log('✅ Admin user created:', adminUser.username);
+    console.log('✅ Base Commander created:', commanderUser.username);
+    console.log('✅ Logistics Officer created:', logisticsUser.username);
 
     process.exit();
   } catch (err) {
-    console.error('❌ Error seeding admin:', err.message);
+    console.error('❌ Error seeding users:', err.message);
     process.exit(1);
   }
 };
 
-createAdmin();
+createUsers();

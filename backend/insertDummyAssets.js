@@ -20,20 +20,20 @@ const insertAssets = async () => {
       {
         name: 'Rifle',
         type: 'Weapon',
-        quantity: 6000,
-        base_id: '686046f8bbdbbd0b744f7f3d', // 🔁 replace with real base_id
+        quantity: 10,
+        base_id: '6862c988dc31528dc75cdf3d', // 🔁 replace with real base_id
       },
       {
         name: 'Tank',
         type: 'Vehicle',
-        quantity: 8000,
-        base_id: '686046f8bbdbbd0b744f7f3d',
+        quantity: 10,
+        base_id: '6862c988dc31528dc75cdf3d',
       },
       {
         name: 'Helmet',
         type: 'Equipment',
-        quantity: 10000,
-        base_id: '686046f8bbdbbd0b744f7f3d',
+        quantity: 10,
+        base_id: '6862c988dc31528dc75cdf3d',
       },
     ];
 
