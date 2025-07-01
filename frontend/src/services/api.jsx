@@ -69,10 +69,10 @@ export const createPurchase = async (data) => {
 export const createTransfer = async (data) => {
   try {
     const response = await API.post('/transfers', data);
-    console.log("✅ Transfer created response:", response);
+    console.log("Transfer created response:", response);
     return response.data;
   } catch (error) {
-    console.error("❌ Error creating transfer:", error.response?.data || error.message);
+    console.error("Error creating transfer:", error.response?.data || error.message);
     throw error;
   }
 };
