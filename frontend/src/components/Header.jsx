@@ -71,14 +71,12 @@ const Header = () => {
             Military Asset Management System
           </Typography>
 
-          {/* Hamburger for mobile */}
           <Box sx={{ display: { xs: 'block', md: 'none' } }}>
             <IconButton color="inherit" onClick={handleDrawerToggle}>
               <MenuIcon />
             </IconButton>
           </Box>
 
-          {/* Buttons for desktop */}
           <Box sx={{ display: { xs: 'none', md: 'block' } }}>
             <Button
               color="inherit"
@@ -137,7 +135,6 @@ const Header = () => {
         </Toolbar>
       </AppBar>
 
-      {/* Drawer for mobile */}
       <Drawer
         anchor="left"
         open={mobileOpen}

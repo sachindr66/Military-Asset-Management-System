@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Typography, TextField, Button } from '@mui/material';
-import { createTransfer } from '../services/api';  // Assuming API service to create a transfer
+import { createTransfer } from '../services/api';  
 
 const TransferPage = () => {
   const [assetId, setAssetId] = useState('');

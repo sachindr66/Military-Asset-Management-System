@@ -7,7 +7,7 @@ const TransferHistory = () => {
 
   useEffect(() => {
     fetchTransfers().then((data) => {
-      setTransfers(data);  // Assuming the response contains transfer data
+      setTransfers(data);  
     });
   }, []);
 

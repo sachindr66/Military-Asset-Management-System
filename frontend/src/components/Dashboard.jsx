@@ -25,7 +25,7 @@ const Dashboard = () => {
   useEffect(() => {
     const storedBaseId = localStorage.getItem('base_id');
     if (!storedBaseId) {
-      console.error('❌ base_id not found in localStorage');
+      console.error('base_id not found in localStorage');
       return;
     }
 
@@ -85,7 +85,6 @@ const Dashboard = () => {
           </Card>
         </Grid>
 
-        {/* Optional: Asset list display */}
         {metrics.assets &&
           metrics.assets.map((asset) => (
             <Grid item xs={12} sm={6} md={3} key={asset._id}>
@@ -94,7 +93,6 @@ const Dashboard = () => {
           ))}
       </Grid>
 
-      {/* Dialog for Net Movement Details */}
       <Dialog open={openDialog} onClose={handleDialogClose}>
         <DialogTitle>Net Movement Details</DialogTitle>
         <DialogContent dividers>

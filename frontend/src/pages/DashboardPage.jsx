@@ -1,6 +1,4 @@
 
-
-import React, { useState, useEffect } from 'react';
 import { Container, Typography, Grid } from '@mui/material';
 import Dashboard from '../components/Dashboard';  // Assuming Dashboard is a component that handles the display
 
@@ -10,7 +8,7 @@ const DashboardPage = () => {
       <Typography variant="h4" gutterBottom>
         Military Asset Dashboard
       </Typography>
-      <Dashboard /> {/* Renders the Dashboard component that shows key metrics */}
+      <Dashboard /> 
     </Container>
   );
 };

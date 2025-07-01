@@ -45,7 +45,7 @@ const PurchasePage = () => {
       await createPurchase(purchaseData);
       alert('✅ Purchase Recorded!');
     } catch (err) {
-      console.error('❌ Error recording purchase:', err);
+      console.error('Error recording purchase:', err);
       alert('Failed to record purchase. Check console.');
     }
   };

@@ -49,7 +49,7 @@ const AssignmentPage = () => {
       await createAssignment(data);
       alert('✅ Assignment done!');
     } catch (error) {
-      console.error('❌ Assignment error:', error?.response?.data || error.message);
+      console.error('Assignment error:', error?.response?.data || error.message);
       alert('Error assigning asset.');
     }
   };

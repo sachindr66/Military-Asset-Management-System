@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  // baseURL: 'http://localhost:5000/api', // Replace with your backend URL
+  // baseURL: 'http://localhost:5000/api', 
   baseURL:"https://military-asset-management-system-ba.vercel.app/api",
   headers: {
     'Content-Type': 'application/json',
@@ -21,7 +21,6 @@ API.interceptors.request.use(
   }
 );
 
-// Login user
 export const loginUser = async (data) => {
   try {
     const response = await API.post('/auth/login', data);
@@ -32,7 +31,6 @@ export const loginUser = async (data) => {
   }
 };
 
-// Fetch dashboard metrics
 export const fetchDashboardMetrics = async (filter = {}) => {
   try {
     const base_id = localStorage.getItem('base_id');
@@ -48,7 +46,6 @@ export const fetchDashboardMetrics = async (filter = {}) => {
   }
 };
 
-// ✅ Fetch all assets
 export const fetchAssets = async () => {
   try {
     const response = await API.get('/assets');
@@ -59,7 +56,6 @@ export const fetchAssets = async () => {
   }
 };
 
-// Create a purchase
 export const createPurchase = async (data) => {
   try {
     const response = await API.post('/purchases', data);
@@ -70,7 +66,6 @@ export const createPurchase = async (data) => {
   }
 };
 
-// Create a transfer
 export const createTransfer = async (data) => {
   try {
     const response = await API.post('/transfers', data);
@@ -83,7 +78,6 @@ export const createTransfer = async (data) => {
 };
 
 
-// Create an assignment
 export const createAssignment = async (data) => {
   try {
     const response = await API.post('/assignments', data);
@@ -106,7 +100,6 @@ export const getPersonnel = async () => {
 
 
 
-// ✅ Fetch all transfers
 export const fetchTransfers = async () => {
   try {
     const response = await API.get('/transfers');
@@ -117,7 +110,6 @@ export const fetchTransfers = async () => {
   }
 };
 
-// ✅ Fetch all bases
 export const fetchBases = async () => {
   try {
     const response = await API.get('/bases');

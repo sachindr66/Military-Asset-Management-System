@@ -53,7 +53,6 @@ const Login = () => {
           Login
         </Typography>
 
-        {/* Login Form */}
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
           <TextField
             fullWidth
@@ -84,7 +83,6 @@ const Login = () => {
           </Button>
         </Box>
 
-        {/* Divider and Demo Info */}
         <Divider sx={{ my: 4 }} />
 
         <Typography variant="h6" gutterBottom>
@@ -92,7 +90,6 @@ const Login = () => {
         </Typography>
 
         <Grid container spacing={2}>
-          {/* Admin */}
           <Grid item xs={12}>
             <Box
               display="flex"
@@ -111,7 +108,6 @@ const Login = () => {
             </Box>
           </Grid>
 
-          {/* Commander */}
           <Grid item xs={12}>
             <Box
               display="flex"
@@ -130,7 +126,6 @@ const Login = () => {
             </Box>
           </Grid>
 
-          {/* Logistics */}
           <Grid item xs={12}>
             <Box
               display="flex"
