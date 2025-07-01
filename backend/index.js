@@ -43,7 +43,7 @@ app.use('/api/bases', baseRoutes)
 
 app.use(logError)
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.CUSTOM_PORT || 5000;
 
 const connectDB = async () => {
     try {
