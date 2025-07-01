@@ -1,6 +1,5 @@
 import Transfer from '../models/Transfer.js';
 import Asset from '../models/Asset.js';
-import Base from '../models/Base.js';
 
 export const createTransfer = async (req, res) => {
   const { asset_id, from_base_id, to_base_id, quantity, date } = req.body;
@@ -20,11 +19,9 @@ export const createTransfer = async (req, res) => {
       return res.status(400).json({ message: 'Not enough assets to transfer.' });
     }
 
-    // Deduct quantity from source base
     asset.quantity -= qty;
     await asset.save();
 
-    // Create transfer record
     const transfer = new Transfer({
       asset_id,
       from_base_id,

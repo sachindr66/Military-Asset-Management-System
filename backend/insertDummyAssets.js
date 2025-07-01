@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import Asset from './models/Asset.js';
 
-dotenv.config(); // Load MONGO_URI from .env
+dotenv.config(); 
 
 const connectDB = async () => {
   try {

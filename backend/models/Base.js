@@ -8,6 +8,5 @@ const transferSchema = new mongoose.Schema({
   date: Date,
 });
 
-// ✅ Avoid OverwriteModelError
 const Transfer = mongoose.models.Transfer || mongoose.model('Transfer', transferSchema);
 export default Transfer;

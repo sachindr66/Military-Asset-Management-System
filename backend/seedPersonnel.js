@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import Personnel from './models/Personnel.js'; // adjust path if needed
 
-dotenv.config(); // load MONGO_URI from .env
+dotenv.config(); 
 
 const start = async () => {
   await mongoose.connect(process.env.MONGO_URI);

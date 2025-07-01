@@ -10,7 +10,6 @@ const createUsers = async () => {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('✅ Connected to MongoDB');
 
-    // Create a base for Base Commander and Logistics Officer
     const base = new Base({ name: 'Bravo Base', location: 'Eastern Zone' });
     await base.save();
     console.log('✅ Base created:', base);

@@ -3,7 +3,6 @@ import Purchase from '../models/Purchase.js';
 import Transfer from '../models/Transfer.js';
 import Assignment from '../models/Assignment.js';
 
-// Get dashboard metrics
 export const getDashboardMetrics = async (req, res) => {
   const baseId = req.query.base_id;
   if (!baseId) {

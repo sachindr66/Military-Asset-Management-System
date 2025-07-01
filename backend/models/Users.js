@@ -6,10 +6,9 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: { type: String, required: true, enum: ['Admin', 'Base Commander', 'Logistics Officer'] },
-  base_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Base' }, // Assuming 'Base' is another model
+  base_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Base' }, 
 });
 
-// Hash password before saving it to the database
 userSchema.pre('save', async function (next) {
   if (this.isModified('password')) {
     const salt = await bcrypt.genSalt(10);
@@ -18,12 +17,10 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-// Method to compare the provided password with the stored hashed password
 userSchema.methods.comparePassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-// Method to generate JWT token
 userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
     { _id: this._id, username: this.username, role: this.role },

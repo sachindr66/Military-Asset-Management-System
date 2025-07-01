@@ -1,6 +1,5 @@
 import Purchase from '../models/Purchase.js';
 
-// Create a new purchase
 export const createPurchase = async (req, res) => {
   const { asset_id, quantity, base_id, date } = req.body;
 
@@ -18,7 +17,6 @@ export const createPurchase = async (req, res) => {
   }
 };
 
-// Get historical purchases
 export const getPurchases = async (req, res) => {
   const { startDate, endDate, equipmentType } = req.query;
 

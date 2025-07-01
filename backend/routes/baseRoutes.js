@@ -5,6 +5,6 @@ import { authenticate, authorize } from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/', authenticate, getBases); // GET /api/bases
+router.get('/', authenticate, getBases); 
 
 export default router;

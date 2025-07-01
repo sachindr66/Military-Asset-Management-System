@@ -27,15 +27,14 @@ app.use(cors({
     credentials:true
 }))
 
-// Routes/
 
 app.use('/api/assets', assetRoutes)
 app.use('/api/purchases', purchaseRoutes)
-// app.use('/api/transfers', transferRoutes)
-app.use('/api/transfers', (req, res, next) => {
-  console.log('🔥 Transfer route hit');
-  next();
-}, transferRoutes);
+app.use('/api/transfers', transferRoutes)
+// app.use('/api/transfers', (req, res, next) => {
+//   console.log('🔥 Transfer route hit');
+//   next();
+// }, transferRoutes);
 app.use('/api/assignments', assignmentRoutes)
 app.use('/api/auth', authRouts)
 app.use('/api/dashboard', dashboardRoutes)

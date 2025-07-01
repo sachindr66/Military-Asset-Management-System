@@ -1,6 +1,5 @@
 import Asset from '../models/Asset.js';
 
-// Get all assets
 const getAssets = async (req, res) => {
   try {
     let query = {};
@@ -14,7 +13,6 @@ const getAssets = async (req, res) => {
 
     const assets = await Asset.find(query);
 
-    // Log if no assets found for debugging
     if (!assets.length) {
       console.warn('⚠️ No assets found for the current user/base.');
     } else {
@@ -28,7 +26,6 @@ const getAssets = async (req, res) => {
   }
 };
 
-// Create a new asset
 const createAsset = async (req, res) => {
   const { name, type, quantity, base_id } = req.body;
 
@@ -49,7 +46,6 @@ const createAsset = async (req, res) => {
   }
 };
 
-// Update an asset
 const updateAsset = async (req, res) => {
   const { id } = req.params;
   const { name, type, quantity, base_id } = req.body;
@@ -74,7 +70,6 @@ const updateAsset = async (req, res) => {
   }
 };
 
-// Delete an asset
 const deleteAsset = async (req, res) => {
   const { id } = req.params;
 

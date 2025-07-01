@@ -3,7 +3,6 @@ import User from '../models/Users.js';
 
 const router = express.Router();
 
-// Register a new user (Admin)
 router.post('/register', async (req, res) => {
   const { username, password, role, base_id } = req.body;
 
@@ -11,13 +10,12 @@ router.post('/register', async (req, res) => {
   try {
     await user.save();
     const token = user.generateAuthToken();
-    res.status(201).json({ token });  // Return token after successful registration
+    res.status(201).json({ token });  
   } catch (err) {
     res.status(400).json({ message: err.message });  // Return error message if registration fails
   }
 });
 
-// Login user and generate token
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -34,14 +32,14 @@ router.post('/login', async (req, res) => {
  console.log("password mismatch")
    return res.status(400).json({ message: 'Invalid credentials' });
     }
-    const token = user.generateAuthToken();  // Generate JWT token
+    const token = user.generateAuthToken(); 
     res.status(200).json({ token,
           user: {
     username: user.username,
     role: user.role,
-    base_id: user.base_id, // ✅ Send base_id to frontend
+    base_id: user.base_id,
   },
-     });  // Return token on successful login
+     });
   } catch (err) {
     res.status(500).json({ message: err.message });  // Return server error message if any
   }
