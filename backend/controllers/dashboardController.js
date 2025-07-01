@@ -21,7 +21,7 @@ export const getDashboardMetrics = async (req, res) => {
     const transfersInTotal = transfersIn.reduce((acc, transfer) => acc + transfer.quantity, 0);
     const transfersOutTotal = transfersOut.reduce((acc, transfer) => acc + transfer.quantity, 0);
     const assignedAssets = assignments.reduce((acc, assignment) => acc + assignment.quantity, 0);
-    const expendedAssets = assignedAssets; // Assuming all assigned assets are expended
+    const expendedAssets = assignedAssets; 
 
     const closingBalance = openingBalance + purchasesTotal + transfersInTotal - transfersOutTotal - assignedAssets;
 

@@ -7,9 +7,9 @@ dotenv.config();
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-    console.log('✅ MongoDB connected');
+    console.log('MongoDB connected');
   } catch (err) {
-    console.error('❌ MongoDB connection failed:', err.message);
+    console.error('MongoDB connection failed:', err.message);
     process.exit(1);
   }
 };
@@ -21,7 +21,7 @@ const insertAssets = async () => {
         name: 'Rifle',
         type: 'Weapon',
         quantity: 10,
-        base_id: '6862c988dc31528dc75cdf3d', // 🔁 replace with real base_id
+        base_id: '6862c988dc31528dc75cdf3d', 
       },
       {
         name: 'Tank',
@@ -38,10 +38,10 @@ const insertAssets = async () => {
     ];
 
     await Asset.insertMany(dummyAssets);
-    console.log('✅ Dummy assets inserted');
+    console.log('Dummy assets inserted');
     process.exit();
   } catch (err) {
-    console.error('❌ Error inserting assets:', err.message);
+    console.error('Error inserting assets:', err.message);
     process.exit(1);
   }
 };

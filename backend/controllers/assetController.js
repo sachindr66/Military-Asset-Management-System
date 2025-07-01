@@ -4,8 +4,8 @@ const getAssets = async (req, res) => {
   try {
     let query = {};
 
-    console.log('🔐 Role:', req.user.role);
-    console.log('📍 Base ID:', req.user.base_id);
+    console.log('Role:', req.user.role);
+    console.log('Base ID:', req.user.base_id);
 
     if (req.user.role === 'Base Commander') {
       query.base_id = req.user.base_id;
@@ -14,14 +14,14 @@ const getAssets = async (req, res) => {
     const assets = await Asset.find(query);
 
     if (!assets.length) {
-      console.warn('⚠️ No assets found for the current user/base.');
+      console.warn('No assets found for the current user/base.');
     } else {
-      console.log(`✅ Found ${assets.length} assets.`);
+      console.log(`Found ${assets.length} assets.`);
     }
 
     res.json(assets);
   } catch (err) {
-    console.error('❌ Error in getAssets:', err);
+    console.error('Error in getAssets:', err);
     res.status(500).json({ message: err.message });
   }
 };
@@ -38,10 +38,10 @@ const createAsset = async (req, res) => {
 
   try {
     const newAsset = await asset.save();
-    console.log('✅ Asset created:', newAsset);
+    console.log('Asset created:', newAsset);
     res.status(201).json(newAsset);
   } catch (err) {
-    console.error('❌ Error creating asset:', err);
+    console.error('Error creating asset:', err);
     res.status(400).json({ message: err.message });
   }
 };
@@ -62,10 +62,10 @@ const updateAsset = async (req, res) => {
     asset.base_id = base_id || asset.base_id;
 
     const updatedAsset = await asset.save();
-    console.log('📝 Asset updated:', updatedAsset);
+    console.log('Asset updated:', updatedAsset);
     res.json(updatedAsset);
   } catch (err) {
-    console.error('❌ Error updating asset:', err);
+    console.error('Error updating asset:', err);
     res.status(400).json({ message: err.message });
   }
 };
@@ -80,10 +80,10 @@ const deleteAsset = async (req, res) => {
     }
 
     await asset.remove();
-    console.log('🗑️ Asset deleted:', asset._id);
+    console.log('Asset deleted:', asset._id);
     res.json({ message: 'Asset deleted' });
   } catch (err) {
-    console.error('❌ Error deleting asset:', err);
+    console.error('Error deleting asset:', err);
     res.status(500).json({ message: err.message });
   }
 };

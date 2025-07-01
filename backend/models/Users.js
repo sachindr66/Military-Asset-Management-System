@@ -30,4 +30,4 @@ userSchema.methods.generateAuthToken = function () {
   return token;
 };
 
-export default mongoose.model('User', userSchema);  // Export model correctly
+export default mongoose.model('User', userSchema);  

@@ -3,8 +3,8 @@ import User from '../models/Users.js';
 
 const authenticate = async (req, res, next) => {
   try {
-    const token = req.header('Authorization').replace('Bearer ', '');  // Get token from Authorization header
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);  // Verify token
+    const token = req.header('Authorization').replace('Bearer ', '');  
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);  
 
     const user = await User.findOne({ _id: decoded._id });
 
@@ -15,7 +15,7 @@ const authenticate = async (req, res, next) => {
     req.user = user;  
     next(); 
   } catch (err) {
-    res.status(401).json({ message: 'Please authenticate.' });  // Unauthorized if no token or invalid token
+    res.status(401).json({ message: 'Please authenticate.' });  
   }
 };
 

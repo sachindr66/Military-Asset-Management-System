@@ -12,7 +12,7 @@ router.post('/register', async (req, res) => {
     const token = user.generateAuthToken();
     res.status(201).json({ token });  
   } catch (err) {
-    res.status(400).json({ message: err.message });  // Return error message if registration fails
+    res.status(400).json({ message: err.message });  
   }
 });
 
@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
 
         return res.status(400).json({ message: 'Invalid credentials' });
 } 
-    const isMatch = await user.comparePassword(password);  // Compare the password
+    const isMatch = await user.comparePassword(password); 
     if (!isMatch){
  console.log("password mismatch")
    return res.status(400).json({ message: 'Invalid credentials' });
@@ -41,7 +41,7 @@ router.post('/login', async (req, res) => {
   },
      });
   } catch (err) {
-    res.status(500).json({ message: err.message });  // Return server error message if any
+    res.status(500).json({ message: err.message });  
   }
 });
 

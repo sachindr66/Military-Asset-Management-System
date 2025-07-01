@@ -5,7 +5,7 @@ export const createTransfer = async (req, res) => {
   const { asset_id, from_base_id, to_base_id, quantity, date } = req.body;
 
   try {
-    console.log('🔥 Transfer request body:', req.body);
+    console.log('Transfer request body:', req.body);
 
     const asset = await Asset.findOne({_id:asset_id, base_id:from_base_id});
     if (!asset) {
@@ -46,10 +46,10 @@ export const createTransfer = async (req, res) => {
       await newTargetAsset.save();
     }
 
-    console.log('✅ Transfer completed and saved.');
+    console.log('Transfer completed and saved.');
     res.status(201).json({ message: 'Transfer completed successfully.' });
   } catch (err) {
-    console.error('❌ Transfer error:', err);
+    console.error('Transfer error:', err);
     res.status(500).json({ message: err.message });
   }
 };

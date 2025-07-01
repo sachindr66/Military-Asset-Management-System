@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import Personnel from './models/Personnel.js'; // adjust path if needed
+import Personnel from './models/Personnel.js'; 
 
 dotenv.config(); 
 
 const start = async () => {
   await mongoose.connect(process.env.MONGO_URI);
-  console.log('✅ Connected to MongoDB');
+  console.log('Connected to MongoDB');
 
   await Personnel.create([
     { name: 'John Doe', rank: 'Captain' },
@@ -14,7 +14,7 @@ const start = async () => {
     { name: 'Rahul Kumar', rank: 'Lieutenant' }
   ]);
 
-  console.log('✅ Dummy personnel inserted');
+  console.log('Dummy personnel inserted');
   process.exit();
 };
 

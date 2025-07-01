@@ -8,11 +8,11 @@ dotenv.config();
 const createUsers = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-    console.log('✅ Connected to MongoDB');
+    console.log('Connected to MongoDB');
 
     const base = new Base({ name: 'Bravo Base', location: 'Eastern Zone' });
     await base.save();
-    console.log('✅ Base created:', base);
+    console.log('Base created:', base);
 
     // Create Admin
     const adminUser = new User({
@@ -42,13 +42,13 @@ const createUsers = async () => {
     await commanderUser.save();
     await logisticsUser.save();
 
-    console.log('✅ Admin user created:', adminUser.username);
-    console.log('✅ Base Commander created:', commanderUser.username);
-    console.log('✅ Logistics Officer created:', logisticsUser.username);
+    console.log('Admin user created:', adminUser.username);
+    console.log('Base Commander created:', commanderUser.username);
+    console.log('Logistics Officer created:', logisticsUser.username);
 
     process.exit();
   } catch (err) {
-    console.error('❌ Error seeding users:', err.message);
+    console.error('Error seeding users:', err.message);
     process.exit(1);
   }
 };

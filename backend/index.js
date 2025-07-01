@@ -22,7 +22,7 @@ app.use(logRequest)
 
 app.use(express.json())
 app.use(cors({
-    // origin:'http://localhost:5173'
+    // origin:'http://localhost:5173',
     origin:'https://military-asset-management-system-opal.vercel.app',
     credentials:true
 }))
@@ -31,10 +31,6 @@ app.use(cors({
 app.use('/api/assets', assetRoutes)
 app.use('/api/purchases', purchaseRoutes)
 app.use('/api/transfers', transferRoutes)
-// app.use('/api/transfers', (req, res, next) => {
-//   console.log('🔥 Transfer route hit');
-//   next();
-// }, transferRoutes);
 app.use('/api/assignments', assignmentRoutes)
 app.use('/api/auth', authRouts)
 app.use('/api/dashboard', dashboardRoutes)
@@ -48,9 +44,9 @@ const PORT = process.env.CUSTOM_PORT || 5000;
 const connectDB = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI)
-        console.log("✅ MongoDB connected successfully");
+        console.log("MongoDB connected successfully");
     } catch (err) {
-        console.error("❌ MongoDB connection error:", err.message);
+        console.error("MongoDB connection error:", err.message);
         process.exit(1); 
     }
 };
@@ -58,9 +54,9 @@ const connectDB = async () => {
 connectDB();
 
 app.get('/', (req, res) => {
-    res.send('✅ index is running and MongoDB is connected!');
+    res.send('index is running and MongoDB is connected!');
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 index running on http://localhost:${PORT}`);
+    console.log(`index running on http://localhost:${PORT}`);
 });
