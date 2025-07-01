@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import DashboardPage from './pages/DashboardPage';
 import PurchasePage from './pages/PurchasePage';
@@ -14,6 +14,7 @@ const App = () => {
     <BrowserRouter>
       <Header />
       <Routes>
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/unauthorized" element={<UnauthorizedPage />} />
 
