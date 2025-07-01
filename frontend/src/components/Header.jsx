@@ -55,10 +55,16 @@ const Header = () => {
             <ListItemText primary="Assignments" />
           </ListItem>
         )}
+        {localStorage.getItem('token') ? (
+          <ListItem button onClick={handleLogout}>
+            <ListItemText primary="Logout" />
+          </ListItem>
+        ) : (
+          <ListItem button onClick={() => navigate('/login')}>
+            <ListItemText primary="Login" />
+          </ListItem>
+        )}
 
-        <ListItem button onClick={handleLogout}>
-          <ListItemText primary="Logout" />
-        </ListItem>
       </List>
     </Box>
   );
@@ -128,9 +134,12 @@ const Header = () => {
               </Button>
             )}
 
-            <Button color="inherit" onClick={handleLogout}>
-              Logout
-            </Button>
+            {localStorage.getItem('token') ? (
+              <Button color="inherit" onClick={handleLogout}>Logout</Button>
+            ) : (
+              <Button color="inherit" component={Link} to="/login">Login</Button>
+            )}
+
           </Box>
         </Toolbar>
       </AppBar>
